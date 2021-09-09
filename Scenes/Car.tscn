@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/Car_01.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Car.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Arrow.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Car" type="TextureButton"]
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 10, 10 )
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 10, 10 )
+
+[node name="Arrow" type="Sprite" parent="Node2D"]
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="BlockLeft" type="Area2D" parent="Node2D/Arrow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Arrow/BlockLeft"]
+position = Vector2( -40, 0 )
+shape = SubResource( 1 )
+
+[node name="BlockRight" type="Area2D" parent="Node2D/Arrow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Arrow/BlockRight"]
+position = Vector2( 40, 0 )
+shape = SubResource( 1 )
+
+[node name="RoadRight" type="Area2D" parent="Node2D/Arrow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Arrow/RoadRight"]
+position = Vector2( 40, -40 )
+shape = SubResource( 1 )
+
+[node name="RoadLeft" type="Area2D" parent="Node2D/Arrow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Arrow/RoadLeft"]
+position = Vector2( -40, -40 )
+shape = SubResource( 1 )
+
+[node name="RoadFront" type="Area2D" parent="Node2D/Arrow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Arrow/RoadFront"]
+position = Vector2( 0, -80 )
+shape = SubResource( 1 )
